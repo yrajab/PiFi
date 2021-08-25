@@ -4,7 +4,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-def push_result(count, result):
+def push_result(count, result, wifi_stats):
 
     url = "http://10.168.70.206:5050/"
     http_headers = {}
@@ -54,6 +54,47 @@ def push_result(count, result):
                     "float": "1",
                     "unit": "Custom",
                     "customunit": "ms"
+                },
+                {
+                    "channel": "Rate",
+                    "value": wifi_stats["Rate"],
+                    "float": "0",
+                    "unit": "Custom",
+                    "customunit": "Mb/s"
+                },
+                {
+                    "channel": "TX Level",
+                    "value": wifi_stats["TXPower"],
+                    "float": "0",
+                    "unit": "Custom",
+                    "customunit": "dBm"
+                },
+                {
+                    "channel": "Quality",
+                    "value": wifi_stats["Quality"],
+                    "float": "0",
+                    "unit": "Percent"
+                },
+                {
+                    "channel": "Signal Level",
+                    "value": wifi_stats["Level"],
+                    "float": "0",
+                    "unit": "Custom",
+                    "customunit": "dBm"
+                },
+                {
+                    "channel": "Frequency",
+                    "value": wifi_stats["Frequency"],
+                    "float": "1",
+                    "unit": "Custom",
+                    "customunit": "GHz"
+                },
+                {
+                    "channel": "Channel",
+                    "value": wifi_stats["Channel"],
+                    "float": "0",
+                    "unit": "Custom",
+                    "customunit": "Ch#"
                 }
             ]
         }
@@ -61,5 +102,8 @@ def push_result(count, result):
 
     full_url = url + token + "?content=" + json.dumps(output_json)
     print(full_url)
-    r = requests.get(full_url, headers=http_headers, verify=False)
-    return(r)
+    try:
+        r = requests.get(full_url, headers=http_headers, verify=False)
+        return(r)
+    except Exception as e:
+        print(e)
