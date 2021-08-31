@@ -13,6 +13,3 @@ def count_calc(ip, sec, int):
 def ping_result(target_address, count, interval, timeout, payload_size):
     result = ping(target_address, count=count, interval=interval, timeout=timeout, privileged=True, payload_size=payload_size)
     return(result)
-
-
-

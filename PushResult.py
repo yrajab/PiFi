@@ -44,7 +44,7 @@ def push_result(count, result, wifi_stats):
                 },
                 {
                     "channel": "Packet Loss",
-                    "value": (result.packet_loss*100),
+                    "value": round((float(result.packet_loss*100)), 1),
                     "float": "1",
                     "unit": "Percent"
                 },
@@ -72,7 +72,7 @@ def push_result(count, result, wifi_stats):
                 {
                     "channel": "Quality",
                     "value": wifi_stats["Quality"],
-                    "float": "0",
+                    "float": "1",
                     "unit": "Percent"
                 },
                 {
@@ -90,11 +90,11 @@ def push_result(count, result, wifi_stats):
                     "customunit": "GHz"
                 },
                 {
-                    "channel": "Channel",
+                    "channel": "WiFi Channel",
                     "value": wifi_stats["Channel"],
                     "float": "0",
                     "unit": "Custom",
-                    "customunit": "Ch#"
+                    "customunit": "Ch"
                 }
             ]
         }

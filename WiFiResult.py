@@ -9,7 +9,7 @@ def wifi_result():
     T = re.search("Power=(\d+)", data).group(1)
     stats["TXPower"] = int(T)
     Q = re.search("Quality=(\d+)", data).group(1)
-    stats["Quality"] = round((int(Q)/70)*100)
+    stats["Quality"] = round(((int(Q)/70)*100), 3)
     L = re.search("level=-(\d+)", data).group(1)
     stats["Level"] = (int(L))*(-1)
 
@@ -19,4 +19,3 @@ def wifi_result():
     C = re.search("Channel:(\d+)", data).group(1)
     stats["Channel"] = int(C)
     return(stats)
- 
