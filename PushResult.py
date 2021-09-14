@@ -6,10 +6,10 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 def push_result(count, result, wifi_stats):
 
-    url = "http://10.168.70.206:5050/"
+    url = "http://<Server IP>:5050/"
     http_headers = {}
     http_headers["accept"] = "application/json; charset=ISO-8859-1;"
-    token = "5FA6A5E4-2F69-4545-8600-F8FDF121BAD3"
+    token = "<token>"
 
     output_json = {
         "prtg": {
