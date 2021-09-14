@@ -4,7 +4,7 @@ import PushResult
 import WiFiResult
 
 
-target_address = "10.69.13.100"
+target_address = "<Target IP>"
 interval = 0.1
 timeout = 0.5
 seconds = 60
